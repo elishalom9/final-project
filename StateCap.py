@@ -15,6 +15,8 @@ import sys
 
 import pytest
 
+
+
 STATES_CAPITALS = {
     'Alabama' : 'Montgomery',
     'Alaska' : 'Juneau',
@@ -69,50 +71,88 @@ STATES_CAPITALS = {
 }
 
 
+
 def capital_of_Idaho():
     # Your code here
+
+    print(STATES_CAPITALS['Idaho'])
+
     pass
 
 def all_states():
     # Your code here
+    #print(STATES_CAPITALS.keys())
+    state = ''
+    for key in STATES_CAPITALS.keys():
+        state+= key + ", "
+    print(state[:-2])
+
     pass
 
 def all_capitals():
     # Your code here
+    capital = ''
+    for value in STATES_CAPITALS.values():
+        capital += value + ", "
+    print(capital[:-2])
     pass
 
 def states_capitals_string():
     # Your code here
+    mysttr = ''
+    my_list = []
+
+    print(len(STATES_CAPITALS))
+    for key , value in STATES_CAPITALS.items():
+        mysttr += key + ' -> ' + value + ', '
+        test = key + ' -> ' + value
+        my_list.append(test)
+
+    print(mysttr[:-2])
+
+    my_list.sort()
+    print(my_list)
+
     pass
-
-
 
 def get_state(capital):
+    for key , value in STATES_CAPITALS.items():
+        # print(key+' '+value)
+        #test = value
+        if ( capital == value ):
+            print("For State Name " + key + " Capital is "+ value)
+    return
     pass
 
-
-
 def test_state_to_capital():
+
     assert 'Cheyenne' == STATES_CAPITALS['Wyoming']
+    get_state(input("import Capital to test:"))
 
 
 def test_state_to_capital_unknown():
     with pytest.raises(KeyError):
         STATES_CAPITALS['']
 
-
 def test_capital_to_state():
     assert 'Wyoming' == get_state('Cheyenne')
-
 
 def test_capital_to_state_unknown():
     with pytest.raises(KeyError):
         get_state('')
 
+test_state_to_capital()
+capital_of_Idaho ()
+all_states()
+all_capitals()
+states_capitals_string()
 
+
+'''
 def main():
     return pytest.main(__file__)
 
 
 if __name__ == '__main__':
     sys.exit(main())
+'''
